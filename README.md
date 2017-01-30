@@ -1,3 +1,21 @@
-# RocketInvaders
-Space Invaders with a twist!
-The cornel branch is going to have new code from the stack exchange!
+
+# Rocket invader
+
+### Classes
+
+#### invader
+
+|class   |                                                         
+| ------------- |
+| Invader |
+|**Atributes**  |
+|position x |
+|position y   |
+|Right boundary|
+|Alive|
+|**Methods**  |
+|Move Invader |
+|Fire|
+|On Hit|
+
+-
