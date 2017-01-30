@@ -5,23 +5,26 @@ pygame.init()
 
 class Invader():
 
-    def __init__(self,invader_position_x,right_boundary,keypress):
+    def __init__(self,x,y):
+        self.image = pygame.image.load("rocket_sprite.gif")
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
 
-        self.invader_position_x= invader_position_x
-        self.right_boundary=right_boundary
-        self.keypress= keypress
 
-    def invader_move(self,keypress,right_boundary,invader_position_x):#Moves the invader
-        if self.invader_position_x> right_boundary:#Right boundary
-            invader_position_x=right_boundary-5
+    def draw(self, screen):
+        screen.blit(self.image, self.rect)
 
-        if self.invader_position_x<0:#Left boundary
-            invader_position_x= 5
+    def update(self, screen_rect, keypress):
 
-        if keypress[K_RIGHT]:# right
-            self.invader_position_x = invader_position_x+ 5
+        if keypress[pygame.K_RIGHT]:  # right
+            self.rect.x += 15
 
-        if keypress[K_LEFT]:# left
-            self.invader_position_x =invader_position_x- 5
+        elif keypress[pygame.K_LEFT]: # left
+            self.rect.x -= 15
 
-        return self.invader_position_x
+        if self.rect.right > screen_rect.right: # right boundary
+            self.rect.right = screen_rect.right
+
+        if self.rect.left < screen_rect.left:
+            self.rect.left = screen_rect.left
